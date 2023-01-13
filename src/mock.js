@@ -1,4 +1,5 @@
-export const tableData = [
+function TableData(data){
+  const tableData = [
     {
       tag_id: 148937,
       tag_name: '电棍',
@@ -2327,3 +2328,21 @@ export const tableData = [
       jump_url: '',
     },
   ];
+  let newChannel = []
+  let oldChannel = []
+for(let i=0;i<tableData.length;i++){
+  if(tableData[i].tag_type=="new_channel")
+    newChannel.push(tableData[i])
+  else
+    oldChannel.push(tableData[i])
+}
+  if(data=="new_channel")
+    return newChannel
+  else if (data=="old_channel")
+    return oldChannel
+  else 
+    return tableData
+}
+export {
+  TableData
+}
