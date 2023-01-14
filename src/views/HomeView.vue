@@ -63,25 +63,25 @@ const tableHeader = {
   short_content:["简述",180],
   content:["详述",180],
 }
-let Data = TableData("")
+const Data = ref(TableData(""))
 
 //实现数据分页
-let total = Data.length
-let pageSize = ref(10)
-let currentPage = ref(1)
+const total = ref(Data.value.length)
+const pageSize = ref(10)
+const currentPage = ref(1)
 //调节pageSize后使当前页面回到第1页
 const handleSizeChange = (val) => {
-  pageSize = ref(val)
-  currentPage = ref(1)
+  pageSize.value = val
+  currentPage.value = 1
 }
 const handleCurrentChange = (val) => {
-  currentPage = ref(val)
+  currentPage.value = val
 }
 
 //选择器实现数据过滤
 const getSecletedValue = (val) =>{
-  Data = TableData(val)
-  total = Data.length
+  Data.value = TableData(val)
+  total.value = Data.value.length
 }
 
 //解决翻页后选中消失问题
